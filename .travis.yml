@@ -1,6 +1,4 @@
 language: generic 
-# script:
-#   - docker run -e CI=true USERNAME/docker-react npm run test
 
 sudo: required
 services:
@@ -11,3 +9,26 @@ before_install:
 
 script: 
   - docker run -e CI=true youngchullim/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-west-1-545095728638"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECURE_KEY
+
+
+
+# The fix is add 'secure' to the access_key_id, similar to what we will do for the secret_access_key.
+
+# The code will now look like this:
+
+# access_key_id:
+#   secure: $AWS_ACCESS_KEY
