@@ -10,4 +10,4 @@ before_install:
   - docker build -t youngchullim/docker-react -f Dockerfile.dev .
 
 script: 
-  - docker run -e CI=true USERNAME/docker-react npm run test
+  - docker run -e CI=true youngchullim/docker-react npm run test
