@@ -23,12 +23,3 @@ deploy:
     secure: $AWS_ACCESS_KEY
   secret_access_key:
     secure: $AWS_SECRET_KEY
-
-
-
-# The fix is add 'secure' to the access_key_id, similar to what we will do for the secret_access_key.
-
-# The code will now look like this:
-
-# access_key_id:
-#   secure: $AWS_ACCESS_KEY
